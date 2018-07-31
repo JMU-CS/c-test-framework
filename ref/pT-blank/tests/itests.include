@@ -1,0 +1,6 @@
+# list of integration tests
+#  format: run_test <TAG> <ARGS>
+#    <TAG>      used as the root for all filenames (i.e., "expected/$TAG.txt")
+#    <ARGS>     command-line arguments to test
+
+run_test    A_hello                 ""

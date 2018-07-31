@@ -1,0 +1,11 @@
+# list of integration tests
+#  format: run_test <TAG> <ARGS>
+#    <TAG>      used as the root for all filenames (i.e., "expected/$TAG.txt")
+#    <ARGS>     command-line arguments to test
+
+run_test    C_hello                 ""
+run_test    C_goodbye               "-g"
+run_test    B_cat                   "-c inputs/B_cat.txt"
+run_test    A_invalid_arg           "-z"
+run_test    A_cat_no_filename       "-c"
+run_test    A_cat_file_noexist      "-c inputs/A_noexist.txt"

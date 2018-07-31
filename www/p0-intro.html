@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<style type="text/css">
+    #ol { font-weight: bold }
+    #ul { font-weight: normal }
+    li { padding: 10px }
+    li.menu { padding: 0px }
+    li.compact { padding: 2px }
+</style>
+<title>CS 261 - Project 0</title>
+</head>
+<body>
+
+<div>
+
+<h2>Project 0: Intro project</h2>
+
+<p> This project serves as an introduction to developing and compiling C
+programs, as well as to the build, testing, and submission framework used in
+this class. The actual code you must write to receive credit for this project
+is trivial, allowing you to focus on the mechanics of completing a project in
+this course. </p>
+
+<h3>Regular Requirements</h3>
+
+<p> These sections describe what you must do to receive credit for "completing"
+P0. </p>
+
+<h4>Unit Requirements</h4>
+
+<p> Here are the functions that you must implement in <tt>p0-intro.c</tt>: </p>
+
+<ul>
+
+    <li class="compact"> <tt>int add_abs (int num1, int num2)</tt> <br />
+        <br /> Returns the sum of the absolute values of the two parameters.
+        </li>
+
+    <li> <tt>int factorial (int num);</tt> <br />
+        <br /> Return the <a
+        href="https://en.wikipedia.org/wiki/Factorial">factorial</a>
+        of non-negative inputs; otherwise, returns 1.</li>
+
+    <li> <tt>int sum_array (int *nums, size_t n);</tt> <br />
+        <br /> Return the sum of all numbers in an array of length <tt>n</tt>.
+        </li>
+
+</ul>
+
+<p> There are several unit tests; some are public and you can view the source
+code in <tt>tests/public.c</tt>, while others are private, meaning you do not
+have access to their source code. This will be the case for all projects in
+this course--it is important that you learn to anticipate edge cases and other
+errant behavior. </p>
+
+<h4>Integration Requirements</h4>
+
+<p> When run without any command-line parameters, the program should print the
+text "<tt>Hello, world!</tt>" followed by a newline character ("<tt>\n</tt>").
+This will require you to edit the code in <tt>main.c</tt>. </p>
+
+<p> In addition, there is some required functionality that is activated using
+command-line switches. You should implement these features as modes in
+<tt>main.c</tt>. One of these modes requires a parameter, which is also passed
+as a command-line argument. We recommend using <a
+href="https://www.gnu.org/software/libc/manual/html_node/Getopt.html"><tt>getopt</tt></a>
+to handle command-line parsing.  </p>
+
+<p> Multiple modes may be active at once, and if any mode is activated, the
+original "<tt>Hello, world!</tt>" message should not print. If multiple modes
+are activated, their output should be printed in the order they are listed
+below. If a mode with a parameter is activated multiple times (via multiple
+command-line switches), only the last parameter should be used. </p>
+
+<p> Here is a list of modes: </p>
+
+<ul>
+
+    <li> Goodbye mode ("<tt>-g</tt>") <br />
+        <br /> Print "<tt>Goodbye!</tt>" </li>
+
+    <li> Cat mode ("<tt>-c &lt;file&gt;</tt>") <br />
+        <br /> Print each line from the given file to standard out, similar to
+        the Unix <tt>cat</tt> utility. </li>
+
+</ul>
+
+<h4>Testing</h4>
+
+<p> Tests have been provided for you. To run these tests, use the "<tt>make
+test</tt>" command from the project folder. At first, your output will look
+like this: </p>
+
+<pre>
+========================================
+             UNIT TESTS
+0%: Checks: 8, Failures: 8, Errors: 0
+public.c:12:F:Public:C_addabs_simple:0: Assertion 'add_abs(2,3) == 5' failed: add_abs(2,3) == 0, 5 == 5
+public.c:19:F:Public:B_factorial_simple:0: Assertion 'factorial(1) == 1' failed: factorial(1) == 0, 1 == 1
+public.c:36:F:Public:B_sumarray_simple:0: Assertion 'sum_array(nums, 4) == 26' failed: sum_array(nums, 4) == -1, 26 == 26
+Private:B_addabs_negative_ints:0: Assertion 'add_abs(2,-4) == 6' failed: add_abs(2,-4) == 0, 6 == 6
+Private:A_factorial_edge_cases:0: Assertion 'factorial(0) == 1' failed: factorial(0) == 0, 1 == 1
+Private:A_sumarray_zero:0: Assertion 'sum_array(nums, 3) == 0' failed: sum_array(nums, 3) == -1, 0 == 0
+Private:A_sumarray_empty_array:0: Assertion 'sum_array(nums, 0) == 0' failed: sum_array(nums, 0) == -1, 0 == 0
+Private:A_sumarray_null_pointer:0: Assertion 'sum_array(((void *)0), 0) == 0' failed: sum_array(((void *)0), 0) == -1, 0 == 0
+========================================
+          INTEGRATION TESTS
+C_hello                        FAIL (see outputs/C_hello.diff for details)
+C_goodbye                      FAIL (see outputs/C_goodbye.diff for details)
+B_cat                          FAIL (see outputs/B_cat.diff for details)
+A_invalid_arg                  FAIL (see outputs/A_invalid_arg.diff for details)
+A_cat_no_filename              FAIL (see outputs/A_cat_no_filename.diff for details)
+A_cat_file_noexist             FAIL (see outputs/A_cat_file_noexist.diff for details)
+No memory leak found.
+========================================
+</pre>
+
+<p> After you finish the project, the output should look like this: </p>
+
+<pre>
+========================================
+             UNIT TESTS
+100%: Checks: 8, Failures: 0, Errors: 0
+========================================
+          INTEGRATION TESTS
+C_hello                        pass
+C_goodbye                      pass
+B_cat                          pass
+A_invalid_arg                  pass
+A_cat_no_filename              pass
+A_cat_file_noexist             pass
+No memory leak found.
+========================================
+</pre>
+
+<p> You should of course write your own tests as well. You should use the
+provided tests only as an indicator of how complete your solution is. </p>
+
+<p> Note that in this project, the "integration" tests don't really test for
+successful integration of smaller program units; they test entirely separate
+functionality. This will not be the case in the rest of the projects. </p>
+
+
+<p> Copyright &copy; 2018 Mike Lam
+<a href="https://validator.w3.org/check?uri=referer">
+<img style="margin: 0 0 -3px 10px;" src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="15" width="50" />
+</a>
+</p>
+
+</div>
+
+</body>
+</html>
+
+

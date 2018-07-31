@@ -1,0 +1,19 @@
+" use four spaces for each step of (auto)indent.
+set shiftwidth=4
+
+" hitting <Tab> will insert four spaces instead.
+set tabstop=4
+set softtabstop=4
+
+" round indent to multiple of shiftwidth.
+set shiftround
+
+" use spaces instead of tabs to insert a tab.
+set expandtab
+
+" copy indent from current line when starting a new line
+" (also deletes indents if nothing else is written on the line)
+set autoindent
+
+" wrap lines at 80 characters
+set textwidth=80

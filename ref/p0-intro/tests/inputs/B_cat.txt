@@ -1,0 +1,8 @@
+== HEADING ==
+
+This is some sample text. It is in a longer paragraph so that there are multiple
+lines of output. After this paragraph, there is single blank line before the
+second (and final) paragraph.
+
+This is the final paragraph. There is also a blank line after this sentence.
+
