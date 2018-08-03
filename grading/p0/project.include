@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# project-specific
+TAG="p0"
+EXE="intro"
+FILES="main.c p0-intro.c"
+REFFILES="p0-intro.h Makefile tests"
+
+# paths
+REF="/path/to/reference"
+SUBMIT="/path/to/submissions"
+RESULTS="/path/to/results"
+
