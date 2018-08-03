@@ -6,6 +6,16 @@ framework for unit testing, some custom Bash scripts for integration testing,
 and the [Memcheck](http://valgrind.org/docs/manual/mc-manual.html)
 Valgrind-based tool for finding memory leaks.
 
+The authors of this framework use it for a series of projects in our CS 261
+course ([example
+assignments](https://w3.cs.jmu.edu/lam2mo/cs261_2017_08/assignments.html)). The
+projects include an introduction to C programming followed by the multi-part
+development of a machine code interpreter for the fictional Y86 language used in
+the [CS:APP](http://csapp.cs.cmu.edu) textbook. We have attempted to clean up
+and generalize the code in this repository, but you may still find references to
+our course in these files. If you have any questions, please contact the authors
+or open an issue.
+
 ## Getting started
 
 ### Prerequisites
