@@ -213,7 +213,10 @@ them here).
 
 ### Docker containers
 
-Containers allow you to run this framework on non-supported platforms. See the
+The framework has been designed to be platform-independent and has been tested
+on a variety of Linux platforms as well as macOS High Sierra and Windows 10
+(using [Cygwin](https://www.cygwin.com)). In addition, we have provided Docker
+files so that you can run this framework on non-supported platforms. See the
 [README.md](docker/README.md) for more info.
 
 ## Contributing
