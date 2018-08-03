@@ -103,9 +103,9 @@ the expected outputs are stored in the `expected` folder. Tests are specified in
 the `itests.include` file, which contains one line for each integration test
 that specifies the name of the test (the output file must match this) as well as
 the command line intended to evoke the corresponding output. The actual testing
-is handled by the `[integration.sh](ref/pT-blank/tests/integration.sh)` Bash
-script, which should not need to be modified when creating a new project except
-to change the executable name at the top.
+is handled by the `integration.sh` Bash script, which should not need to be
+modified when creating a new project except to change the executable name at the
+top.
 
 To add a new integration test: 1) put any necessary input (not all integration
 tests require an input file; e.g., if all parameters are provided on the command
