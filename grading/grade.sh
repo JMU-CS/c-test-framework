@@ -44,35 +44,43 @@ for eid in `ls $SUBMIT`; do
 
                 # summarize unit test results
                 grep Checks "$runpath/tests/utests.txt"
-                if [ -z "$(grep "C_" "$runpath/tests/utests.txt")" ]; then
-                    if [ -z "$(grep "B_" "$runpath/tests/utests.txt")" ]; then
-                        if [ -z "$(grep "A_" "$runpath/tests/utests.txt")" ]; then
-                            ugrade="A"
+                if [ -z "$(grep "D_" "$runpath/tests/utests.txt")" ]; then
+                    if [ -z "$(grep "C_" "$runpath/tests/utests.txt")" ]; then
+                        if [ -z "$(grep "B_" "$runpath/tests/utests.txt")" ]; then
+                            if [ -z "$(grep "A_" "$runpath/tests/utests.txt")" ]; then
+                                ugrade="A"
+                            else
+                                ugrade="B"
+                            fi
                         else
-                            ugrade="B"
+                            ugrade="C"
                         fi
                     else
-                        ugrade="C"
+                        ugrade="D"
                     fi
                 else
-                    ugrade="D"
+                    ugrade="F"
                 fi
 
                 # summarize integration test results
                 grep FAIL "$runpath/tests/itests.txt" | grep -v X_
                 grep "emory leak" "$runpath/tests/itests.txt"
-                if [ -z "$(grep "C_.*FAIL" "$runpath/tests/itests.txt")" ]; then
-                    if [ -z "$(grep "B_.*FAIL" "$runpath/tests/itests.txt")" ]; then
-                        if [ -z "$(grep "A_.*FAIL" "$runpath/tests/itests.txt")" ]; then
-                            igrade="A"
+                if [ -z "$(grep "D_.*FAIL" "$runpath/tests/itests.txt")" ]; then
+                    if [ -z "$(grep "C_.*FAIL" "$runpath/tests/itests.txt")" ]; then
+                        if [ -z "$(grep "B_.*FAIL" "$runpath/tests/itests.txt")" ]; then
+                            if [ -z "$(grep "A_.*FAIL" "$runpath/tests/itests.txt")" ]; then
+                                igrade="A"
+                            else
+                                igrade="B"
+                            fi
                         else
-                            igrade="B"
+                            igrade="C"
                         fi
                     else
-                        igrade="C"
+                        igrade="D"
                     fi
                 else
-                    igrade="D"
+                    ugrade="F"
                 fi
 
                 # print summary
