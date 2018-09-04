@@ -206,10 +206,7 @@ like. You will need to change all of the files and paths to match your setup:
 
 When the script is run, it copies all of the student submissions along with
 testing files into subfolders in `RESULTS`. It then builds and runs all tests on
-all submissions. The results are printed to standard output, which we usually
-redirect to a file for further processing (our post-processing scripts are too
-institution-specific to be of use to anyone else and so we are not distributing
-them here).
+all submissions, printing a summary of the results to standard output.
 
 ### Docker containers
 
