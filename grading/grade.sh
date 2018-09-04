@@ -2,10 +2,19 @@
 
 source project.include
 
+# initialize grade counts
+acount=0
+bcount=0
+ccount=0
+dcount=0
+fcount=0
+xcount=0
+
 # all students
 for eid in `ls $SUBMIT`; do
 
-    echo "== $eid =="
+    # print student id
+    printf '%15s ' "$eid"
 
     # clear old results
     rm -rf "$RESULTS/$eid"
@@ -43,7 +52,7 @@ for eid in `ls $SUBMIT`; do
             if [ -e "$runpath/$EXE" ]; then
 
                 # summarize unit test results
-                grep Checks "$runpath/tests/utests.txt"
+                uresults=$(grep Checks "$runpath/tests/utests.txt")
                 if [ -z "$(grep "D_" "$runpath/tests/utests.txt")" ]; then
                     if [ -z "$(grep "C_" "$runpath/tests/utests.txt")" ]; then
                         if [ -z "$(grep "B_" "$runpath/tests/utests.txt")" ]; then
@@ -63,8 +72,7 @@ for eid in `ls $SUBMIT`; do
                 fi
 
                 # summarize integration test results
-                grep FAIL "$runpath/tests/itests.txt" | grep -v X_
-                grep "emory leak" "$runpath/tests/itests.txt"
+                iresults="Integration failures: $(grep FAIL "$runpath/tests/itests.txt" | grep -v X_ | wc -l)"
                 if [ -z "$(grep "D_.*FAIL" "$runpath/tests/itests.txt")" ]; then
                     if [ -z "$(grep "C_.*FAIL" "$runpath/tests/itests.txt")" ]; then
                         if [ -z "$(grep "B_.*FAIL" "$runpath/tests/itests.txt")" ]; then
@@ -80,22 +88,66 @@ for eid in `ls $SUBMIT`; do
                         igrade="D"
                     fi
                 else
-                    ugrade="F"
+                    igrade="F"
                 fi
 
-                # print summary
-                echo "Unit test grade:        $ugrade"
-                echo "Integration test grade: $igrade"
+                # calculate base grade
+                if [ "$ugrade" \< "$igrade" ]; then
+                    bgrade=$igrade
+                else
+                    bgrade=$ugrade
+                fi
+
+                # update grade counts
+                if [ "$bgrade" == "A" ]; then
+                    acount=$((acount+1))
+                elif [ "$bgrade" == "B" ]; then
+                    bcount=$((bcount+1))
+                elif [ "$bgrade" == "C" ]; then
+                    ccount=$((ccount+1))
+                elif [ "$bgrade" == "D" ]; then
+                    dcount=$((dcount+1))
+                elif [ "$bgrade" == "F" ]; then
+                    fcount=$((fcount+1))
+                fi
+
+                # get valgrind, compiler, and security check results
+                vresults="$(grep "emory leak" "$runpath/tests/itests.txt")"
+                cresults="$(grep -E "( warning:)|( error:)" "$runpath/summary.txt")"
+                sresults="$(grep -E "(atoi)|(atol)|(atoll)|(atof)|([^f]gets)|(strcat)|(strcpy)|(sprintf)" $runpath/*.c)"
+                if [ -n "$sresults" ]; then
+                    echo "Insecure function check results:" >>"$runpath/summary.txt"
+                    echo "$sresults" >>"$runpath/summary.txt"
+                fi
+
+                # print per-student summary
+                printf ' %s  %-45s %-30s %s' "$ugrade $igrade $bgrade" "$uresults" "$iresults" "$vresults"
+                [ -n "$cresults" ] && printf ' Compiler warning/error(s).'
+                [ -n "$sresults" ] && printf ' Insecure function(s).'
+                echo ""
+
             else
-                echo "Base grade: F (does not compile)"
+                fcount=$((fcount+1))
+                echo "     F  (does not compile)"
             fi
         else
-            echo "Base grade: F (incomplete submission)"
+            fcount=$((fcount+1))
+            echo "     F  (incomplete submission)"
         fi
     else
-        echo "Base grade: X (no submission)"
+        xcount=$((xcount+1))
+        echo "     X  (no submission)"
     fi
-
-    echo ""
 done
+
+# print overall summary
+echo ""
+echo "Grade summary:"
+echo "  A $acount"
+echo "  B $bcount"
+echo "  C $ccount"
+echo "  D $dcount"
+echo "  F $fcount"
+echo "  X $xcount"
+echo ""
 
