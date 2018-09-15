@@ -37,6 +37,9 @@ for eid in `ls $SUBMIT`; do
             fi
         done
 
+        # save timestamp
+        tstamp=$(ls -l $SUBMIT/$eid/$TAG/*.c | head -n 1 | tr -s ' ' | cut -d ' ' -f 6-8)
+
         # check for completeness
         if [ "$ok" == "yes" ]; then
 
@@ -121,7 +124,7 @@ for eid in `ls $SUBMIT`; do
                 fi
 
                 # print per-student summary
-                printf ' %s  %-45s %-30s %s' "$ugrade $igrade $bgrade" "$uresults" "$iresults" "$vresults"
+                printf ' %s  %12s  %-45s %-30s %s' "$ugrade $igrade $bgrade" "$tstamp" "$uresults" "$iresults" "$vresults"
                 [ -n "$cresults" ] && printf ' Compiler warning/error(s).'
                 [ -n "$sresults" ] && printf ' Insecure function(s).'
                 echo ""
