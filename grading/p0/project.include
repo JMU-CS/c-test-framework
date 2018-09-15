@@ -7,7 +7,7 @@ FILES="main.c p0-intro.c"
 REFFILES="p0-intro.h Makefile tests"
 
 # paths
-REF="/path/to/reference"
-SUBMIT="/path/to/submissions"
-RESULTS="/path/to/results"
+REF="../../ref/p0-intro"
+SUBMIT="../submissions"
+RESULTS="./results"
 

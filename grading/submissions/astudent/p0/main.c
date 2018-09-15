@@ -50,7 +50,7 @@ int main (int argc, char **argv)
     }
 
     // END_SOLUTION
-    // BOILERPLATE: printf("Hello, class!\n");
+    // BOILERPLATE: printf("Hello, CS 261!\n");
     return EXIT_SUCCESS;
 }
 

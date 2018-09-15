@@ -22,10 +22,6 @@ int main (int argc, char **argv)
 
             case 'g': goodbye = true; hello = false;                      break;
             case 'c':     cat = true; hello = false;     cat_fn = optarg; break;
-
-            default:
-                printf("Invalid argument.\n");
-                return EXIT_FAILURE;
         }
     }
 
@@ -38,10 +34,6 @@ int main (int argc, char **argv)
 
     if (cat) {
         FILE *fin = fopen(cat_fn, "r");
-        if (!fin) {
-            printf("Invalid file.\n");
-            exit(EXIT_FAILURE);
-        }
         char buffer[BUFFER_SIZE];
         while (fgets(buffer, BUFFER_SIZE, fin) != NULL) {
             printf("%s", buffer);
@@ -50,7 +42,7 @@ int main (int argc, char **argv)
     }
 
     // END_SOLUTION
-    // BOILERPLATE: printf("Hello, class!\n");
+    // BOILERPLATE: printf("Hello, CS 261!\n");
     return EXIT_SUCCESS;
 }
 
