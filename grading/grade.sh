@@ -55,7 +55,7 @@ for eid in `ls $SUBMIT`; do
             if [ -e "$runpath/$EXE" ]; then
 
                 # summarize unit test results
-                uresults=$(grep Checks "$runpath/tests/utests.txt")
+                uresults="Unit results: $(grep Checks "$runpath/tests/utests.txt")"
                 if [ -z "$(grep "D_" "$runpath/tests/utests.txt")" ]; then
                     if [ -z "$(grep "C_" "$runpath/tests/utests.txt")" ]; then
                         if [ -z "$(grep "B_" "$runpath/tests/utests.txt")" ]; then
@@ -124,7 +124,7 @@ for eid in `ls $SUBMIT`; do
                 fi
 
                 # print per-student summary
-                printf ' %s  %12s  %-45s %-30s %s' "$ugrade $igrade $bgrade" "$tstamp" "$uresults" "$iresults" "$vresults"
+                printf ' %s  %12s  %-55s %-30s %s' "$ugrade $igrade $bgrade" "$tstamp" "$uresults" "$iresults" "$vresults"
                 [ -n "$cresults" ] && printf ' Compiler warning/error(s).'
                 [ -n "$sresults" ] && printf ' Insecure function(s).'
                 echo ""
