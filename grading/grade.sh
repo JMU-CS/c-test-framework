@@ -31,8 +31,9 @@ for eid in `ls $SUBMIT`; do
 
         runpath="$RESULTS/$eid"
 
-        # create testing folder for this student
+        # create testing folder for this student and empty it
         mkdir -p "$runpath"
+        rm -rf $runpath/*
 
         # check and copy all files
         ok="yes"
