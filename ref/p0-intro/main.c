@@ -13,15 +13,18 @@ int main (int argc, char **argv)
     const size_t BUFFER_SIZE = 4096;
     bool hello = true;
     bool goodbye = false;
+    bool fact = false;
+    char *fact_num = NULL;
     bool cat = false;
     char *cat_fn = NULL;
 
     char c;
-    while ((c = getopt(argc, argv, "gt:c:h:u:e:")) != -1) {
+    while ((c = getopt(argc, argv, "gf:c:")) != -1) {
         switch (c) {
 
-            case 'g': goodbye = true; hello = false;                      break;
-            case 'c':     cat = true; hello = false;     cat_fn = optarg; break;
+            case 'g': goodbye = true; hello = false;                    break;
+            case 'f':    fact = true; hello = false; fact_num = optarg; break;
+            case 'c':     cat = true; hello = false;   cat_fn = optarg; break;
 
             default:
                 printf("Invalid argument.\n");
@@ -34,6 +37,10 @@ int main (int argc, char **argv)
     }
     if (goodbye) {
         printf("Goodbye!\n");
+    }
+
+    if (fact) {
+        printf("%d\n", factorial(strtol(fact_num, NULL, 10)));
     }
 
     if (cat) {

@@ -26,7 +26,7 @@ this course. </p>
 
 <h3>Regular Requirements</h3>
 
-<p> These sections describe what you must do to receive credit for "completing"
+<p> These sections describe what you must do to receive credit for completing
 P0. </p>
 
 <h4>Unit Requirements</h4>
@@ -82,6 +82,10 @@ command-line switches), only the last parameter should be used. </p>
     <li> Goodbye mode ("<tt>-g</tt>") <br />
         <br /> Print "<tt>Goodbye!</tt>" </li>
 
+    <li> Factorial mode ("<tt>-f &lt;n&gt;</tt>") <br />
+        <br /> Print the factorial of the given number, using the
+        <tt>factorial</tt> function described in the previous section. </li>
+
     <li> Cat mode ("<tt>-c &lt;file&gt;</tt>") <br />
         <br /> Print each line from the given file to standard out, similar to
         the Unix <tt>cat</tt> utility. </li>
@@ -108,10 +112,13 @@ Private:A_sumarray_empty_array:0: Assertion 'sum_array(nums, 0) == 0' failed: su
 Private:A_sumarray_null_pointer:0: Assertion 'sum_array(((void *)0), 0) == 0' failed: sum_array(((void *)0), 0) == -1, 0 == 0
 ========================================
           INTEGRATION TESTS
-C_hello                        FAIL (see outputs/C_hello.diff for details)
+D_hello                        FAIL (see outputs/D_hello.diff for details)
 C_goodbye                      FAIL (see outputs/C_goodbye.diff for details)
+B_fact                         FAIL (see outputs/B_fact.diff for details)
 B_cat                          FAIL (see outputs/B_cat.diff for details)
 A_invalid_arg                  FAIL (see outputs/A_invalid_arg.diff for details)
+A_fact_no_number               FAIL (see outputs/A_fact_no_number.diff for details)
+A_fact_letters                 FAIL (see outputs/A_fact_letters.diff for details)
 A_cat_no_filename              FAIL (see outputs/A_cat_no_filename.diff for details)
 A_cat_file_noexist             FAIL (see outputs/A_cat_file_noexist.diff for details)
 No memory leak found.
@@ -126,10 +133,13 @@ No memory leak found.
 100%: Checks: 8, Failures: 0, Errors: 0
 ========================================
           INTEGRATION TESTS
-C_hello                        pass
+D_hello                        pass
 C_goodbye                      pass
+B_fact                         pass
 B_cat                          pass
 A_invalid_arg                  pass
+A_fact_no_number               pass
+A_fact_letters                 pass
 A_cat_no_filename              pass
 A_cat_file_noexist             pass
 No memory leak found.
@@ -139,16 +149,11 @@ No memory leak found.
 <p> You should of course write your own tests as well. You should use the
 provided tests only as an indicator of how complete your solution is. </p>
 
-<p> Note that in this project, the "integration" tests don't really test for
-successful integration of smaller program units; they test entirely separate
+<p> Note that in this project, some of the "integration" tests don't really test
+for successful integration of smaller program units; they test entirely separate
 functionality. This will not be the case in the rest of the projects. </p>
 
-
-<p> Copyright &copy; 2018 Mike Lam
-<a href="https://validator.w3.org/check?uri=referer">
-<img style="margin: 0 0 -3px 10px;" src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="15" width="50" />
-</a>
-</p>
+<p> Copyright &copy; 2018 Mike Lam </p>
 
 </div>
 
