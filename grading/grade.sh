@@ -2,6 +2,13 @@
 
 source project.include
 
+# detect timeout script
+TIMEOUT="timeout"
+$TIMEOUT --help &>/dev/null
+if [[ $? -ne 0 ]]; then
+    TIMEOUT="gtimeout"
+fi
+
 # initialize grade counts
 acount=0
 bcount=0
@@ -45,11 +52,11 @@ for eid in `ls $SUBMIT`; do
 
             # copy other files
             for f in $REFFILES; do
-                cp -rL "$REF/$f" "$runpath/$f"
+                cp -r "$REF/$f" "$runpath/$f"
             done
 
             # run tests
-            timeout 2m make -C "$runpath" test &>"$runpath/summary.txt"
+            $TIMEOUT 2m make -C "$runpath" test &>"$runpath/summary.txt"
 
             # check for compilation errors
             if [ -e "$runpath/$EXE" ]; then
