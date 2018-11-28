@@ -55,6 +55,9 @@ for eid in `ls $SUBMIT`; do
                 cp -r "$REF/$f" "$runpath/$f"
             done
 
+            # compile project
+            make -C "$runpath" &>"$runpath/build.txt"
+
             # run tests
             $TIMEOUT 2m make -C "$runpath" test &>"$runpath/summary.txt"
 
@@ -123,8 +126,12 @@ for eid in `ls $SUBMIT`; do
 
                 # get valgrind, compiler, and security check results
                 vresults="$(grep "emory leak" "$runpath/tests/itests.txt")"
-                cresults="$(grep -E "( warning:)|( error:)" "$runpath/summary.txt")"
+                cresults="$(grep -E "( warning:)|( error:)" "$runpath/build.txt")"
                 sresults="$(grep -E "(atoi)|(atol)|(atoll)|(atof)|([^f]gets)|(strcat)|(strcpy)|(sprintf)" $runpath/*.c)"
+                if [ -n "$cresults" ]; then
+                    echo "Compiler warning/error(s):" >>"$runpath/summary.txt"
+                    cat "$runpath/build.txt" >>"$runpath/summary.txt"
+                fi
                 if [ -n "$sresults" ]; then
                     echo "Insecure function check results:" >>"$runpath/summary.txt"
                     echo "$sresults" >>"$runpath/summary.txt"
