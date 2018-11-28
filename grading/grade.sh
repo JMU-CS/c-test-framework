@@ -52,7 +52,7 @@ for eid in `ls $SUBMIT`; do
 
             # copy other files
             for f in $REFFILES; do
-                cp -r "$REF/$f" "$runpath/$f"
+                cp -RL "$REF/$f" "$runpath/$f"
             done
 
             # compile project
