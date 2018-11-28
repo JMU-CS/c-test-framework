@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# project-specific
+TAG="pT"
+EXE="blank"
+FILES="main.c pT-blank.c"
+REFFILES="pT-blank.h Makefile tests"
+
+# paths
+REF="../../ref/pT-blank"
+SUBMIT="../submissions"
+RESULTS="./results"
+

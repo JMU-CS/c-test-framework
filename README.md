@@ -188,21 +188,20 @@ identifier (e.g., '`p0`', '`p1`', etc.).
 
 You must also create a `project.include` file (in the current folder wherever
 you wish to run the tests, but we recommend it NOT be in the submissio folder)
-containing filename and path information specific to your project. See the [p0
-file](grading/p0/project.include) for an example of what this file should look
-like. You will need to change all of the files and paths to match your setup:
+containing filename and path information specific to your project. See the
+[template file](grading/pT/project.include) or [p0 file](grading/p0/project.include)
+for examples of what this file should look like. You will need to change all of
+the files and paths to match your setup:
 
 * `TAG` is the unique project identifier.
 * `EXE` is the name of the compiled binary.
 * `FILES` is a list of submission files to be copied into the results folder.
 * `REFFILES` is a list of reference testing files to be copied into the results
   folder (this is to prevent the student from altering the test files).
-* `REF` is an absolute path to the project reference files.
-* `SUBMIT` is an absolute path to the root student submission folder, which
-  should contain student subfolders and project subsubfolders as described
-  above.
-* `RESULTS` is an absolute path to a folder where all of the results can be
-  copied.
+* `REF` is the path to the project reference files.
+* `SUBMIT` is the path to the root student submission folder, which should
+  contain student subfolders and project subsubfolders as described above.
+* `RESULTS` is the path to a folder where all of the results can be copied.
 
 When the script is run, it copies all of the student submissions along with
 testing files into subfolders in `RESULTS`. It then builds and runs all tests on
