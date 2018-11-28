@@ -56,6 +56,9 @@ for eid in `ls $SUBMIT`; do
                 cp -RL "$REF/$f" "$runpath/$f"
             done
 
+            # clean project to remove any old object files from reference
+            make -C "$runpath" clean &>/dev/null
+
             # compile project
             make -C "$runpath" &>"$runpath/build.txt"
 
