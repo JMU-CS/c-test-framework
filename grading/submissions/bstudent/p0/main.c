@@ -16,7 +16,7 @@ int main (int argc, char **argv)
     bool cat = false;
     char *cat_fn = NULL;
 
-    char c;
+    int c;
     while ((c = getopt(argc, argv, "gf:c:")) != -1) {
         switch (c) {
 
