@@ -125,10 +125,10 @@ line) in the `inputs` folder, 2) put the required output in a text file in the
 `expected` folder, and 3) add a corresponding line to `itests.include`.
 
 Note that there is no "code" for integration tests and thus there are no
-"private" integration tests. If you wish to have integration tests that you do
-not distribute, we recommend maintaining two different copies of your reference
-solution and use symlinks for all files except `itests.include` and the
-additional test files.
+"private" integration tests. There is a method for having "hidden" integration
+tests that are not distributed to students. Hidden integration tests can be
+placed in the appropriate section in `itests.include` and the test name must
+end with `_H`.
 
 Because memory management is such an important part of coding in a low-level
 language, the script also runs each test in Valgrind/Memcheck to check for
