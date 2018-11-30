@@ -70,10 +70,10 @@ details about how the tests work and for instructions on adding new tests.
 
 Unit tests are intended to test individual routines (and their dependencies),
 and they are written in C using the [Check](https://libcheck.github.io/check/)
-framework. Often, the code for these tests tends to resemble the solution, so it
-is desirable to distribute these tests without their source. Thus, there are
+framework. Often the code for these tests tends to resemble the solution so it
+is sometimes desirable to distribute them without the source. Thus, there are
 three main unit testing files: `public.c`, `private.c`, and `hidden.c`. The
-first is distributed as-is so that the students can see how the test is
+first is distributed as-is so that the students can see how the tests are
 written, the second is distributed as a stripped object file so that students
 can run the tests and see the results but they do not have access to the source
 code, and the third is not distributed at all, allowing for tests students
