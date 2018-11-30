@@ -4,3 +4,11 @@
 #    <ARGS>     command-line arguments to test
 
 run_test    A_hello                 ""
+
+# BEGIN_SOLUTION
+
+# Hidden integration tests go here with a _H suffix
+
+run_test    A_hello_2_H             ""
+
+# END_SOLUTION
