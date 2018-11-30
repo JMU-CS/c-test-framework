@@ -8,6 +8,9 @@
 # Mike Lam, James Madison University, Fall 2016
 #
 
+# Allow extended globbing
+shopt -s extglob
+
 function cleanup {
     sed -e '/BEGIN_SOLUTION/,/END_SOLUTION/d' "$REF/$1" >tmp
     sed -e 's/\/\/ BOILERPLATE: //g' tmp >$ROOT/$1
@@ -43,13 +46,15 @@ cleanup "tests/testsuite.c"
 make -C $REF/tests
 cp -H $REF/tests/public.c          $ROOT/tests/
 cp -H $REF/tests/integration.sh    $ROOT/tests/
-cp -H $REF/tests/inputs/*          $ROOT/tests/inputs/
-cp -H $REF/tests/expected/*        $ROOT/tests/expected/
+cp -H $REF/tests/inputs/!(*_H.*)   $ROOT/tests/inputs/
+cp -H $REF/tests/expected/!(*_H.*) $ROOT/tests/expected/
 cp -H $REF/tests/itests.*          $ROOT/tests/
 cp -H $REF/tests/private.o         $ROOT/tests/
 strip -S $ROOT/tests/private.o
 cat $REF/tests/Makefile | sed -e '/^MODS/d' | sed -e 's/^#MODS/MODS/g' \
                         | sed -e '/^OBJS/d' | sed -e 's/^#OBJS/OBJS/g' >$ROOT/tests/Makefile
+
+cleanup "tests/itests.include"
 
 # build tarball and zip file
 tar -zchvf $ROOT.tar.gz $ROOT

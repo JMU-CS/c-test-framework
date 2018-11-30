@@ -12,3 +12,12 @@ run_test    A_fact_no_number        "-f"
 run_test    A_fact_letters          "-f asdf"
 run_test    A_cat_no_filename       "-c"
 run_test    A_cat_file_noexist      "-c inputs/A_noexist.txt"
+
+# BEGIN_SOLUTION
+
+# Hidden integration tests go here with a _H suffix
+
+run_test    B_goodbye_fact_H        "-g -f 4"
+run_test    A_goodbye_cat_H         "-gc inputs/B_cat.txt"
+
+# END_SOLUTION
