@@ -125,7 +125,7 @@ line) in the `inputs` folder, 2) put the required output in a text file in the
 `expected` folder, and 3) add a corresponding line to `itests.include`.
 
 Note that there is no "code" for integration tests and thus there are no
-"private" integration tests. There is a method for having "hidden" integration
+private integration tests; however, there is support for hidden integration
 tests that are not distributed to students. Hidden integration tests can be
 placed in the appropriate section in `itests.include` and the test name must
 end with `_H`.
