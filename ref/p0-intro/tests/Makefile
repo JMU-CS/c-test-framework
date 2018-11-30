@@ -45,7 +45,7 @@ utest: $(EXE) $(TEST)
 	@echo "========================================"
 	@echo "             UNIT TESTS"
 	@./$(TEST) 2>/dev/null >$(UTESTOUT)
-	@cat $(UTESTOUT) | sed -n -e '/Checks/,$$p' | sed -e 's/^private.*:F://g'
+	@cat $(UTESTOUT) | sed -n -e '/Checks/,$$p' | sed -e 's/^private.*:[EF]://g'
 
 itest: $(EXE)
 	@echo "========================================"
