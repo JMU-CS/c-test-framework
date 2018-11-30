@@ -71,11 +71,13 @@ details about how the tests work and for instructions on adding new tests.
 Unit tests are intended to test individual routines (and their dependencies),
 and they are written in C using the [Check](https://libcheck.github.io/check/)
 framework. Often, the code for these tests tends to resemble the solution, so it
-is desirable to distribute these tests without their source. Thus, there are two
-main unit testing files: `public.c` and `private.c`. The former is distributed
-as-is so that the students can see how the test is written, and the latter is
-distributed as a stripped object file so that students can run the tests and see
-the results but they do not have access to the source code.
+is desirable to distribute these tests without their source. Thus, there are
+three main unit testing files: `public.c`, `private.c`, and `hidden.c`. The
+first is distributed as-is so that the students can see how the test is
+written, the second is distributed as a stripped object file so that students
+can run the tests and see the results but they do not have access to the source
+code, and the third is not distributed at all, allowing for tests students
+neither have access to nor know about.
 
 Tests are delimited using the `START_TEST` and `END_TEST` macros provided by
 Check. Testing expressions are written using Check assertion routines
@@ -120,7 +122,7 @@ top.
 To add a new integration test: 1) put any necessary input (not all integration
 tests require an input file; e.g., if all parameters are provided on the command
 line) in the `inputs` folder, 2) put the required output in a text file in the
-`expected' folder, and 3) add a corresponding line to `itests.include`.
+`expected` folder, and 3) add a corresponding line to `itests.include`.
 
 Note that there is no "code" for integration tests and thus there are no
 "private" integration tests. If you wish to have integration tests that you do

@@ -38,8 +38,9 @@ cleanup "pT-blank.h"
 cleanup "pT-blank.c"
 
 # testsuite
+cleanup "tests/testsuite.c"
+
 make -C $REF/tests
-cp -H $REF/tests/testsuite.c       $ROOT/tests/
 cp -H $REF/tests/public.c          $ROOT/tests/
 cp -H $REF/tests/integration.sh    $ROOT/tests/
 cp -H $REF/tests/inputs/*          $ROOT/tests/inputs/
