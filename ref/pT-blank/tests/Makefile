@@ -24,7 +24,7 @@
 
 EXE=../blank
 TEST=testsuite
-MODS=public.o private.o
+MODS=public.o private.o hidden.o
 #MODS=public.o
 OBJS=../pT-blank.o
 #OBJS=../pT-blank.o private.o

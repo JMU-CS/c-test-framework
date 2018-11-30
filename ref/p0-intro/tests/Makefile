@@ -24,7 +24,7 @@
 
 EXE=../intro
 TEST=testsuite
-MODS=public.o private.o
+MODS=public.o private.o hidden.o
 #MODS=public.o
 OBJS=../p0-intro.o
 #OBJS=../p0-intro.o private.o
