@@ -24,16 +24,14 @@ for eid in `ls $SUBMIT`; do
     printf '%15s ' "$eid"
 
     # clear old results
-    rm -rf "$RESULTS/$eid"
+    runpath="$RESULTS/$eid"
+    rm -rf "$runpath"
 
     # check for submission
     if [ -e "$SUBMIT/$eid/$TAG" ]; then
 
-        runpath="$RESULTS/$eid"
-
-        # create testing folder for this student and empty it
+        # create testing folder for this student
         mkdir -p "$runpath"
-        rm -rf $runpath/*
 
         # check and copy all files
         ok="yes"
