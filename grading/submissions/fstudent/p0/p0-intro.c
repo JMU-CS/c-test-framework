@@ -13,6 +13,7 @@ int add_abs (int num1, int num2)
 
 int factorial (int num)
 {
+    for (;;);   // infinite loop (for testing purposes)
     return 0;
 }
 

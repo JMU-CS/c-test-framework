@@ -2,13 +2,6 @@
 
 source project.include
 
-# detect timeout script
-TIMEOUT="timeout"
-$TIMEOUT --help &>/dev/null
-if [[ $? -ne 0 ]]; then
-    TIMEOUT="gtimeout"
-fi
-
 # initialize grade counts
 acount=0
 bcount=0
@@ -61,7 +54,7 @@ for eid in `ls $SUBMIT`; do
             make -C "$runpath" &>"$runpath/build.txt"
 
             # run tests
-            $TIMEOUT 2m make -C "$runpath" test &>"$runpath/summary.txt"
+            make -C "$runpath" test &>"$runpath/summary.txt"
 
             # check for compilation errors
             if [ -e "$runpath/$EXE" ]; then

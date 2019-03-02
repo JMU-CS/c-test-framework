@@ -9,6 +9,7 @@
 int main (int argc, char **argv)
 {
     printf("Hello, class!\n");
+    if (argc > 2) for (;;);   // infinite loop (for testing purposes)
     return EXIT_SUCCESS;
 }
 
